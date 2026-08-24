@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grade 2 ELA Teacher Manual Master Hub</title>
   <style>
-    /* Apple Inspired Dark Theme */
+    /* Modern Dark Gradient Background */
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: #121212;
+      background: linear-gradient(135deg, #1a1a1c, #09090b);
       color: #f5f5f7;
       margin: 0;
       display: flex;
@@ -16,69 +16,86 @@
       overflow: hidden;
     }
 
-    /* The Frosted Glass Sidebar */
+    /* TRUE Floating Frosted Glass Sidebar */
     #sidebar {
-      width: 280px;
-      background: rgba(40, 40, 40, 0.6);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      width: 260px;
+      margin: 20px; /* This pushes it away from the edge so it floats */
+      background: rgba(255, 255, 255, 0.03); /* Subtle glass tint */
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.08); /* Frosted edges */
+      border-radius: 24px; /* Fully rounded borders */
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); /* Floating shadow */
       display: flex;
       flex-direction: column;
-      padding: 40px 20px;
+      padding: 30px 20px;
       box-sizing: border-box;
       flex-shrink: 0;
+      z-index: 10;
     }
 
     #sidebar h1 {
-      font-size: 1.3em;
+      font-size: 1.2em;
       margin-top: 0;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
       color: #fff;
-      font-weight: 600;
+      font-weight: 700;
       line-height: 1.4;
-      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    #nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
     .nav-item {
       padding: 14px 18px;
-      margin-bottom: 10px;
-      border-radius: 10px;
+      border-radius: 14px;
       cursor: pointer;
-      color: #ebebf5;
+      color: #a1a1a6;
       font-weight: 500;
-      font-size: 1.1em;
-      transition: background 0.2s, color 0.2s;
+      font-size: 1.05em;
+      transition: all 0.3s ease;
     }
 
     .nav-item:hover {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
     }
 
     .nav-item.active {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.12);
       color: #fff;
       font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     /* Main Content Area */
     #content-area {
       flex: 1;
-      padding: 60px 80px;
+      padding: 40px 60px;
       overflow-y: auto;
-      background-color: #1c1c1e;
+      /* Hiding the scrollbar for a cleaner Apple look */
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    #content-area::-webkit-scrollbar {
+      display: none;
     }
 
     .subject-title {
-      font-size: 2.8em;
-      margin-top: 0;
+      font-size: 3em;
+      margin-top: 20px;
       margin-bottom: 25px;
       color: #fff;
-      font-weight: 700;
+      font-weight: 800;
+      letter-spacing: -1px;
     }
 
     .action-bar {
-      margin-bottom: 50px;
+      margin-bottom: 40px;
       display: flex;
       gap: 15px;
       flex-wrap: wrap;
@@ -86,38 +103,47 @@
 
     .btn {
       display: inline-block;
-      background: #0a84ff; /* Sleek accent blue */
+      background: #0a84ff;
       color: white;
       padding: 12px 24px;
       text-decoration: none;
       border-radius: 24px;
       font-weight: 600;
-      transition: background 0.2s, transform 0.1s;
+      transition: all 0.2s;
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
     .btn:hover {
       background: #007aff;
       transform: scale(1.02);
+      box-shadow: 0 6px 16px rgba(10, 132, 255, 0.3);
     }
 
     /* Media Grid */
     .media-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      padding-bottom: 50px;
     }
 
     .media-card {
-      background: #2c2c2e;
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 24px;
+      padding: 25px;
+      transition: transform 0.3s ease;
+    }
+
+    .media-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.04);
     }
 
     .media-title {
-      font-size: 1.4em;
+      font-size: 1.3em;
       font-weight: 600;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -125,10 +151,10 @@
     }
 
     .media-description {
-      color: #aeaeb2;
+      color: #86868b;
       font-size: 0.95em;
-      line-height: 1.6;
-      margin-bottom: 25px;
+      line-height: 1.5;
+      margin-bottom: 20px;
     }
 
     audio, video {
@@ -136,6 +162,55 @@
       border-radius: 12px;
       outline: none;
       background: #000;
+    }
+
+    /* 📱 MOBILE RESPONSIVENESS FIX */
+    @media (max-width: 900px) {
+      body {
+        flex-direction: column;
+        overflow: auto; /* Let the whole page scroll on phone */
+      }
+
+      #sidebar {
+        width: auto;
+        margin: 15px;
+        padding: 20px 15px;
+        flex-direction: column;
+        border-radius: 20px;
+      }
+
+      #sidebar h1 {
+        font-size: 1.1em;
+        margin-bottom: 15px;
+      }
+
+      #nav-links {
+        flex-direction: row;
+        overflow-x: auto; /* Swipeable menu */
+        padding-bottom: 5px;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      
+      #nav-links::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav-item {
+        white-space: nowrap;
+        padding: 10px 16px;
+        font-size: 0.95em;
+      }
+
+      #content-area {
+        padding: 10px 20px 40px 20px;
+        overflow-y: visible;
+      }
+
+      .subject-title {
+        font-size: 2.2em;
+        margin-top: 10px;
+      }
     }
   </style>
 </head>
@@ -155,7 +230,6 @@
   <script>
     let hubData = {};
 
-    // Pull the exact same data.json you already built
     fetch('data.json')
       .then(response => response.json())
       .then(data => {
@@ -182,7 +256,6 @@
     }
 
     function renderSubject(subjectKey) {
-      // Highlight the active subject in the sidebar
       document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
       document.getElementById('nav-' + subjectKey).classList.add('active');
 
@@ -194,7 +267,6 @@
         objectivesHtml += `<a href="${sub.objectives[q]}" target="_blank" class="btn">${q} Objectives</a> `;
       }
 
-      // Build the focused layout for the selected subject
       contentArea.innerHTML = `
         <h2 class="subject-title">${sub.title}</h2>
         <div class="action-bar">

@@ -3,179 +3,224 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grade 2 ELA Teacher Master Hub</title>
+  <title>Grade 2 ELA Teacher Manual Master Hub</title>
   <style>
-    /* Clean, modern background */
+    /* Apple Inspired Dark Theme */
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f4f8;
-      color: #333;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #121212;
+      color: #f5f5f7;
       margin: 0;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* The Frosted Glass Sidebar */
+    #sidebar {
+      width: 280px;
+      background: rgba(40, 40, 40, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      flex-direction: column;
       padding: 40px 20px;
-    }
-    
-    h1 {
-      text-align: center;
-      color: #102a43;
-      margin-bottom: 40px;
-      font-size: 2.5em;
+      box-sizing: border-box;
+      flex-shrink: 0;
     }
 
-    /* Grid layout updated for 4 side-by-side columns */
-    #dashboard {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      max-width: 98%; /* Widened to fit all cards cleanly */
-      margin: 0 auto;
-    }
-
-    /* Card aesthetic with soft shadow */
-    .card {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-    }
-
-    .card h2 {
-      color: #243b53;
-      border-bottom: 3px solid #627d98;
-      padding-bottom: 10px;
+    #sidebar h1 {
+      font-size: 1.3em;
       margin-top: 0;
-      font-size: 1.4em;
+      margin-bottom: 40px;
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.5px;
     }
 
-    /* Buttons for PDFs */
+    .nav-item {
+      padding: 14px 18px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      color: #ebebf5;
+      font-weight: 500;
+      font-size: 1.1em;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-item.active {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* Main Content Area */
+    #content-area {
+      flex: 1;
+      padding: 60px 80px;
+      overflow-y: auto;
+      background-color: #1c1c1e;
+    }
+
+    .subject-title {
+      font-size: 2.8em;
+      margin-top: 0;
+      margin-bottom: 25px;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .action-bar {
+      margin-bottom: 50px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
     .btn {
       display: inline-block;
-      background: #3e5c76;
+      background: #0a84ff; /* Sleek accent blue */
       color: white;
-      padding: 8px 12px;
+      padding: 12px 24px;
       text-decoration: none;
-      border-radius: 8px;
-      margin-top: 15px;
-      font-weight: bold;
-      transition: background 0.2s;
-      font-size: 0.9em;
+      border-radius: 24px;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.1s;
     }
 
     .btn:hover {
-      background: #1d2d44;
+      background: #007aff;
+      transform: scale(1.02);
     }
 
-    /* Media section styling and hover reveals */
-    .media-section {
-      margin-top: 20px;
-      padding: 12px;
-      background: #f9f9fa;
-      border-radius: 12px;
-      border: 1px solid #e4e7eb;
+    /* Media Grid */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 40px;
+    }
+
+    .media-card {
+      background: #2c2c2e;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
     .media-title {
-      font-weight: bold;
-      color: #102a43;
-      cursor: default;
+      font-size: 1.4em;
+      font-weight: 600;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 0.95em;
+      color: #fff;
     }
 
     .media-description {
-      font-size: 0.85em;
-      color: #486581;
-      margin-top: 8px;
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: all 0.4s ease;
-    }
-
-    /* This triggers the hidden description to appear when hovering */
-    .media-section:hover .media-description {
-      max-height: 120px;
-      opacity: 1;
-      margin-bottom: 10px;
+      color: #aeaeb2;
+      font-size: 0.95em;
+      line-height: 1.6;
+      margin-bottom: 25px;
     }
 
     audio, video {
       width: 100%;
-      margin-top: 12px;
-      border-radius: 8px;
+      border-radius: 12px;
       outline: none;
-    }
-
-    /* Keep it readable on smaller laptop screens */
-    @media (max-width: 1200px) {
-      #dashboard {
-        gap: 15px;
-      }
-      .card {
-        padding: 15px;
-      }
+      background: #000;
     }
   </style>
 </head>
 <body>
 
-  <!-- The title has been updated here -->
-  <h1>Grade 2 ELA Teacher Manual Master Hub</h1>
-  <div id="dashboard"></div>
+  <!-- Sidebar Menu -->
+  <nav id="sidebar">
+    <h1>Grade 2 ELA<br>Teacher Manual<br>Master Hub</h1>
+    <div id="nav-links"></div>
+  </nav>
+
+  <!-- Content Viewing Area -->
+  <main id="content-area">
+    <!-- The javascript will inject the clicked subject's media right here -->
+  </main>
 
   <script>
+    let hubData = {};
+
+    // Pull the exact same data.json you already built
     fetch('data.json')
       .then(response => response.json())
       .then(data => {
-        const dashboard = document.getElementById('dashboard');
-        const subjects = data.subjects;
+        hubData = data.subjects;
+        buildNavigation();
         
-        for (const key in subjects) {
-          const sub = subjects[key];
-          const card = document.createElement('div');
-          card.className = 'card';
-          
-          let objectivesHtml = '';
-          for (const q in sub.objectives) {
-            objectivesHtml += `<a href="${sub.objectives[q]}" target="_blank" class="btn">${q} Objectives</a> `;
-          }
-
-          card.innerHTML = `
-            <h2>${sub.title}</h2>
-            <a href="${sub.manual_pdf}" target="_blank" class="btn">📖 Read Master Manual</a>
-            
-            <div class="media-section">
-              <div class="media-title">🎧 ${sub.podcast.title}</div>
-              <div class="media-description">${sub.podcast.description}</div>
-              <audio controls preload="metadata">
-                <source src="${sub.podcast.url}" type="audio/mp4">
-              </audio>
-            </div>
-
-            <div class="media-section">
-              <div class="media-title">📺 ${sub.video.title}</div>
-              <div class="media-description">${sub.video.description}</div>
-              <video controls preload="metadata">
-                <source src="${sub.video.url}" type="video/mp4">
-              </video>
-            </div>
-            
-            <div class="media-section" style="background: transparent; border: none; padding: 0;">
-              ${objectivesHtml}
-            </div>
-          `;
-          dashboard.appendChild(card);
-        }
+        // Auto-load the first subject (Reading) when the page opens
+        renderSubject(Object.keys(hubData)[0]);
       })
       .catch(error => console.error('Error loading the ELA data:', error));
+
+    function buildNavigation() {
+      const navContainer = document.getElementById('nav-links');
+      navContainer.innerHTML = '';
+      
+      for (const key in hubData) {
+        const navItem = document.createElement('div');
+        navItem.className = 'nav-item';
+        navItem.innerText = hubData[key].title;
+        navItem.onclick = () => renderSubject(key);
+        navItem.id = 'nav-' + key;
+        navContainer.appendChild(navItem);
+      }
+    }
+
+    function renderSubject(subjectKey) {
+      // Highlight the active subject in the sidebar
+      document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+      document.getElementById('nav-' + subjectKey).classList.add('active');
+
+      const sub = hubData[subjectKey];
+      const contentArea = document.getElementById('content-area');
+      
+      let objectivesHtml = '';
+      for (const q in sub.objectives) {
+        objectivesHtml += `<a href="${sub.objectives[q]}" target="_blank" class="btn">${q} Objectives</a> `;
+      }
+
+      // Build the focused layout for the selected subject
+      contentArea.innerHTML = `
+        <h2 class="subject-title">${sub.title}</h2>
+        <div class="action-bar">
+          <a href="${sub.manual_pdf}" target="_blank" class="btn">📖 Read Master Manual</a>
+          ${objectivesHtml}
+        </div>
+
+        <div class="media-grid">
+          <div class="media-card">
+            <div class="media-title">🎧 ${sub.podcast.title}</div>
+            <div class="media-description">${sub.podcast.description}</div>
+            <audio controls preload="metadata">
+              <source src="${sub.podcast.url}" type="audio/mp4">
+            </audio>
+          </div>
+
+          <div class="media-card">
+            <div class="media-title">📺 ${sub.video.title}</div>
+            <div class="media-description">${sub.video.description}</div>
+            <video controls preload="metadata">
+              <source src="${sub.video.url}" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      `;
+    }
   </script>
 
 </body>

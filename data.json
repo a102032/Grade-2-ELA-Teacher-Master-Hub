@@ -67,6 +67,21 @@
       "objectives": {
         "Q1": "G2 2026 2027 Q1 Teaching Objectives.pdf"
       }
+    },
+    "workshops": {
+      "title": "New Teacher Workshops",
+      "manual_pdf": "S1 New Teacher Workshop Slides.pdf",
+      "manual_title": "View Workshop Slides",
+      "podcast": {
+        "title": "Mastering HMH Into Reading",
+        "description": "A deep dive audio session on adapting and mastering the HMH Into Reading curriculum for our students.",
+        "url": "Mastering_HMH_intoReading_for_Taiwanese_Students.m4a"
+      },
+      "video": {
+        "title": "The RS Blueprint",
+        "description": "A complete video walkthrough of the Reading Subject blueprint to help new teachers hit the ground running.",
+        "url": "The_RS_Blueprint.mp4"
+      }
     }
   }
 }

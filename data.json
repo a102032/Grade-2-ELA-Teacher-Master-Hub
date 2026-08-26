@@ -1,7 +1,7 @@
 {
   "subjects": {
     "reading": {
-      "title": "RS (Reading)",
+      "title": "G2 RS (Reading)",
       "manual_pdf": "G2 RS Master Teaching Manual.pdf",
       "podcast": {
         "title": "Deep Dive Podcast for RS",
@@ -18,7 +18,7 @@
       }
     },
     "writing": {
-      "title": "Writing",
+      "title": "G2 Writing",
       "manual_pdf": "G2 Writing Master Teaching Manual.pdf",
       "podcast": {
         "title": "Deep Dive Podcast for Writing",
@@ -35,7 +35,7 @@
       }
     },
     "grammar": {
-      "title": "Grammar",
+      "title": "G2 Grammar",
       "manual_pdf": "G2 Grammar Master Teaching Manual.pdf",
       "podcast": {
         "title": "Deep Dive Podcast for Grammar",
@@ -52,7 +52,7 @@
       }
     },
     "spelling": {
-      "title": "Spelling",
+      "title": "G2 Spelling",
       "manual_pdf": "G2 Spelling Master Teaching Manual.pdf",
       "podcast": {
         "title": "Deep Dive Podcast for Spelling",

@@ -72,6 +72,13 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
+    /* Subtle divider line between sections */
+    .nav-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+      margin: 10px 15px;
+    }
+
     /* Main Content Area */
     #content-area {
       flex: 1;
@@ -239,6 +246,12 @@
         padding: 10px 16px;
         font-size: 0.95em;
       }
+      
+      .nav-divider {
+        width: 1px;
+        height: auto;
+        margin: 10px;
+      }
 
       #content-area {
         padding: 10px 20px 40px 20px;
@@ -278,6 +291,13 @@
       navContainer.innerHTML = '';
       
       for (const key in hubData) {
+        // This adds the dividing line right before the "workshops" item is built
+        if (key === 'workshops') {
+          const divider = document.createElement('div');
+          divider.className = 'nav-divider';
+          navContainer.appendChild(divider);
+        }
+
         const navItem = document.createElement('div');
         navItem.className = 'nav-item';
         navItem.innerText = hubData[key].title;
@@ -294,7 +314,6 @@
       const sub = hubData[subjectKey];
       const contentArea = document.getElementById('content-area');
       
-      // Check if objectives exist before trying to build the buttons
       let objectivesHtml = '';
       if (sub.objectives) {
         for (const q in sub.objectives) {
@@ -302,7 +321,6 @@
         }
       }
 
-      // Automatically swap the button text if manual_title is provided in data.json
       const manualButtonText = sub.manual_title ? sub.manual_title : "Read Master Manual";
 
       contentArea.innerHTML = `

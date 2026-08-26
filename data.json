@@ -82,6 +82,21 @@
         "description": "A complete video walkthrough of the Reading Subject blueprint to help new teachers hit the ground running.",
         "url": "The_RS_Blueprint.mp4"
       }
+    },
+    "igroup": {
+      "title": "🚑 i-Group Survival Guide",
+      "manual_pdf": "RS Program i-Group Survival Guide & Tips.pdf",
+      "manual_title": "View Survival Guide",
+      "podcast": {
+        "title": "i-Group Reading Survival Guide",
+        "description": "A lifeline audio session packed with scaffolding ideas, strategies, and tools for supporting our lower-level students.",
+        "url": "Yuteh_i_Group_reading_survival_guide.m4a"
+      },
+      "video": {
+        "title": "The i-Group Survival Guide",
+        "description": "A visual walkthrough of essential tips, strategies, and lifelines for teaching the i-Group.",
+        "url": "The_i-Group_Survival_Guide.mp4"
+      }
     }
   }
 }

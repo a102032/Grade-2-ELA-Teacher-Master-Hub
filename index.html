@@ -156,7 +156,7 @@
       margin-bottom: 20px;
     }
 
-    /* Separated Audio and Video Styling to fix the black bleed */
+    /* Separated Audio and Video Styling */
     audio {
       width: 100%;
       outline: none;
@@ -176,18 +176,17 @@
       align-items: center;
       gap: 3px;
       height: 20px;
-      margin-left: auto; /* Pushes the waves to the right side */
+      margin-left: auto; 
     }
 
     .bar {
       width: 4px;
       height: 4px;
-      background-color: #0a84ff; /* Apple accent blue */
+      background-color: #0a84ff; 
       border-radius: 2px;
       transition: height 0.1s ease;
     }
 
-    /* Triggered via Javascript when playing */
     .is-playing .bar {
       animation: bounce 0.8s infinite ease-in-out alternate;
     }
@@ -295,16 +294,21 @@
       const sub = hubData[subjectKey];
       const contentArea = document.getElementById('content-area');
       
+      // Check if objectives exist before trying to build the buttons
       let objectivesHtml = '';
-      for (const q in sub.objectives) {
-        objectivesHtml += `<a href="${sub.objectives[q]}" target="_blank" class="btn">${q} Objectives</a> `;
+      if (sub.objectives) {
+        for (const q in sub.objectives) {
+          objectivesHtml += `<a href="${sub.objectives[q]}" target="_blank" class="btn">${q} Objectives</a> `;
+        }
       }
 
-      // Injected HTML now includes the waveform bars and unique IDs for the audio controls
+      // Automatically swap the button text if manual_title is provided in data.json
+      const manualButtonText = sub.manual_title ? sub.manual_title : "Read Master Manual";
+
       contentArea.innerHTML = `
         <h2 class="subject-title">${sub.title}</h2>
         <div class="action-bar">
-          <a href="${sub.manual_pdf}" target="_blank" class="btn">📖 Read Master Manual</a>
+          <a href="${sub.manual_pdf}" target="_blank" class="btn">📖 ${manualButtonText}</a>
           ${objectivesHtml}
         </div>
 
@@ -336,7 +340,6 @@
         </div>
       `;
 
-      // JavaScript to control the sound wave animation
       const audioPlayer = document.getElementById('podcast-audio');
       const visualizer = document.getElementById('visualizer');
 
